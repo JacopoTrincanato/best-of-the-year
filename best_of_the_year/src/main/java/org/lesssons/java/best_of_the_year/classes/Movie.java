@@ -27,4 +27,9 @@ public class Movie {
     public void setTitolo(String titolo) {
         this.titolo = titolo;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%i, %s", id, titolo);
+    }
 }

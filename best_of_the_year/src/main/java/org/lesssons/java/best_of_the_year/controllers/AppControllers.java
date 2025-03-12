@@ -26,8 +26,31 @@ public class AppControllers {
     // creo la rotta movies
     @GetMapping("/movies")
     public String movies(Model model) {
-        model.addAttribute("moviesList", getBestMovies());
+        ArrayList<Movie> movies = getBestMovies();
+        ArrayList<String> titoli = new ArrayList<>();
+
+        for (Movie movie : movies) {
+            titoli.add(movie.getTitolo());
+        }
+
+        model.addAttribute("moviesList", titoli);
+
         return "movies";
+    }
+
+    // creo la rotta songs
+    @GetMapping("/songs")
+    public String songs(Model model) {
+        ArrayList<Song> songs = getBestSongs();
+        ArrayList<String> titoli = new ArrayList<>();
+
+        for (Song song : songs) {
+            titoli.add(song.getTitolo());
+        }
+
+        model.addAttribute("songsList", titoli);
+
+        return "songs";
     }
 
     // creo i metodi privati getBestMovies and getBestSongs
