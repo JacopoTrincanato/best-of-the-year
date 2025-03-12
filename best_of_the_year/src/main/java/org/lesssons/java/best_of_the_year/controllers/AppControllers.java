@@ -23,6 +23,13 @@ public class AppControllers {
         return "homepage";
     }
 
+    // creo la rotta movies
+    @GetMapping("/movies")
+    public String movies(Model model) {
+        model.addAttribute("moviesList", getBestMovies());
+        return "movies";
+    }
+
     // creo i metodi privati getBestMovies and getBestSongs
     private ArrayList<Movie> getBestMovies() {
         ArrayList<Movie> movies = new ArrayList<>();
