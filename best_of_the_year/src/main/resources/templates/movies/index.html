@@ -15,15 +15,14 @@
 </head>
 
 <body>
-
-
     <main>
-        <div>
-            <h2>Best Movies</h2>
-            <ul>
-                <li th:each="movie : ${moviesList}" th:text="${movie.titolo}"></li>
+        <div class="d-flex justify-content-center align-items-center flex-column gap-4">
+            <h2 class="mt-4">Best Movies</h2>
+            <ul class="d-flex justify-content-center flex-column list-unstyled border border-dark">
+                <li class="border-bottom border-dark px-5 py-3 w-100 text-center" th:each="movie : ${moviesList}"
+                    th:text="${movie.titolo}">
+                </li>
             </ul>
-
         </div>
     </main>
 </body>
