@@ -62,10 +62,20 @@ public class AppControllers {
 
         model.addAttribute("songsList", songsTitles);
 
-        return "songs";
+        return "songs/index";
     }
 
     // creo la rotta songs/{id}
+    @GetMapping("songs/{id}")
+    public String songById(Model model, @PathVariable("id") int urlSongId) {
+        for (Song song : songs) {
+            if (song.getId() == urlSongId) {
+                model.addAttribute("songTitle", song.getTitolo());
+            }
+        }
+
+        return "songs/songById";
+    }
 
     // creo i metodi privati getBestMovies and getBestSongs
     private ArrayList<Movie> getBestMovies() {
