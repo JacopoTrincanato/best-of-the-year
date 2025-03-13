@@ -7,7 +7,6 @@
     <title>Homepage</title>
     <!--importo il frammento per l'header-->
     <th:block th:replace="~{fragments :: header}">
-
     </th:block>
 
     <!--importo il frammento per bootstrap-->
@@ -18,8 +17,11 @@
 <body>
 
     <main>
-        <h2>Best of the year by</h2>
-        <h2 th:text="${name}"></h2>
+        <div class="d-flex align-items-center justify-content-center">
+            <h2>Best of the year by...</h2>
+            <h2 th:text="${name}"></h2>
+
+        </div>
     </main>
 </body>
 
