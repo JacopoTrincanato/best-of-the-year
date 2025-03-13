@@ -5,12 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movies</title>
+    <!--importo il frammento per l'header-->
+    <th:block th:replace="~{fragments :: header}">
+
+    </th:block>
+
+    <!--importo il frammento per bootstrap-->
+    <th:block th:replace="~{fragments :: bootstrap}">
 </head>
 
 <body>
-    <header>
-        <h1 th:text="'Best of the year by ' + ${name}"></h1>
-    </header>
+
 
     <main>
         <div>
