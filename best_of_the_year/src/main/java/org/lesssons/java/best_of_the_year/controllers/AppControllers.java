@@ -14,10 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/")
 public class AppControllers {
+
     ArrayList<Movie> movies = getBestMovies();
-    ArrayList<String> moviesTitles = new ArrayList<>();
     ArrayList<Song> songs = getBestSongs();
-    ArrayList<String> songsTitles = new ArrayList<>();
 
     // creo la rotta dell'applicazione
     @GetMapping("/")
@@ -31,11 +30,8 @@ public class AppControllers {
     // creo la rotta movies
     @GetMapping("/movies")
     public String movies(Model model) {
-        for (Movie movie : movies) {
-            moviesTitles.add(movie.getTitolo());
-        }
 
-        model.addAttribute("moviesList", moviesTitles);
+        model.addAttribute("moviesList", movies);
 
         return "movies/index";
     }
@@ -56,11 +52,7 @@ public class AppControllers {
     @GetMapping("/songs")
     public String songs(Model model) {
 
-        for (Song song : songs) {
-            songsTitles.add(song.getTitolo());
-        }
-
-        model.addAttribute("songsList", songsTitles);
+        model.addAttribute("songsList", songs);
 
         return "songs/index";
     }

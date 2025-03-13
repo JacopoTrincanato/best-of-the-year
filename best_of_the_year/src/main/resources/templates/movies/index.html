@@ -13,7 +13,13 @@
     </header>
 
     <main>
-        <p th:text="${moviesList}"></p>
+        <div>
+            <h2>Best Movies</h2>
+            <ul>
+                <li th:each="movie : ${moviesList}" th:text="${movie.titolo}"></li>
+            </ul>
+
+        </div>
     </main>
 </body>
 
