@@ -14,9 +14,18 @@
 
 <body>
     <!--creo un frammento per l'header-->
-    <header th:fragment="header">
-        <h1>Best of the year by</h1>
+    <header th:fragment="header" class="d-flex align-items-center p-4 g-4 border border-dark">
+        <h2 class="border">Best of the year by</h2>
+        <div>
+
+            <a th:href="@{/movies}" th:text="movies" class="btn btn-light">
+            </a>
+
+            <a th:href="@{/songs}" th:text="songs" class="btn btn-light">
+            </a>
+        </div>
     </header>
+
 
 </body>
 
