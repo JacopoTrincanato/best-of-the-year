@@ -7,12 +7,17 @@ import org.lesssons.java.best_of_the_year.classes.Song;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/")
 public class AppControllers {
+    ArrayList<Movie> movies = getBestMovies();
+    ArrayList<String> moviesTitles = new ArrayList<>();
+    ArrayList<Song> songs = getBestSongs();
+    ArrayList<String> songsTitles = new ArrayList<>();
 
     // creo la rotta dell'applicazione
     @GetMapping("/")
@@ -26,32 +31,41 @@ public class AppControllers {
     // creo la rotta movies
     @GetMapping("/movies")
     public String movies(Model model) {
-        ArrayList<Movie> movies = getBestMovies();
-        ArrayList<String> titoli = new ArrayList<>();
-
         for (Movie movie : movies) {
-            titoli.add(movie.getTitolo());
+            moviesTitles.add(movie.getTitolo());
         }
 
-        model.addAttribute("moviesList", titoli);
+        model.addAttribute("moviesList", moviesTitles);
 
-        return "movies";
+        return "movies/index";
+    }
+
+    // creo la rotta movies/{id}
+    @GetMapping("movies/{id}")
+    public String movieById(Model model, @PathVariable("id") int urlMovieId) {
+
+        for (Movie movie : movies) {
+            if (movie.getId() == urlMovieId) {
+                model.addAttribute("movieTitle", movie.getTitolo());
+            }
+        }
+        return "movies/movieById";
     }
 
     // creo la rotta songs
     @GetMapping("/songs")
     public String songs(Model model) {
-        ArrayList<Song> songs = getBestSongs();
-        ArrayList<String> titoli = new ArrayList<>();
 
         for (Song song : songs) {
-            titoli.add(song.getTitolo());
+            songsTitles.add(song.getTitolo());
         }
 
-        model.addAttribute("songsList", titoli);
+        model.addAttribute("songsList", songsTitles);
 
         return "songs";
     }
+
+    // creo la rotta songs/{id}
 
     // creo i metodi privati getBestMovies and getBestSongs
     private ArrayList<Movie> getBestMovies() {
