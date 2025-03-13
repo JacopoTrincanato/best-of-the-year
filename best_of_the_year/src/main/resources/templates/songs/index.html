@@ -8,12 +8,23 @@
 </head>
 
 <body>
-    <header>
-        <h1 th:text="'Best of the year by ' + ${name}"></h1>
-    </header>
+    <!--importo il frammento per l'header-->
+    <th:block th:replace="~{fragments :: header}">
+
+    </th:block>
+
+    <!--importo il frammento per bootstrap-->
+    <th:block th:replace="~{fragments :: bootstrap}">
+
+    </th:block>
 
     <main>
-        <p th:text="${songsList}"></p>
+        <div>
+            <h2>Best Songs</h2>
+            <ul>
+                <li th:each="song : ${songsList}" th:text="${song.titolo}"></li>
+            </ul>
+        </div>
     </main>
 </body>
 

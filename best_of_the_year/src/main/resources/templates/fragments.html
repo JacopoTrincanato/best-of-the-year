@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie By Id</title>
+</head>
+
+<body>
+
+    <!--creo un frammento per l'header-->
+    <header th:fragment="header">
+        <h1 th:text="Best of the year by "></h1>
+    </header>
+
+    <!--creo un frammento per bootstrap-->
+    <th:block th:fragment="bootstrap">
+        <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+    </th:block>
+</body>
+
+</html>
